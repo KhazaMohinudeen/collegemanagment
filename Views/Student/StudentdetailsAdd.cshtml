@@ -1,0 +1,120 @@
+﻿
+@model collegemanagment.Models.Addstudent
+
+@{
+    ViewBag.Title = "Registaration Page";
+
+}
+<html>
+<
+
+
+<body>
+
+         @*@if (ViewBag.Message != null)  
+    {  
+        <script type="text/javascript">  
+            window.onload = function () {  
+                alert("@ViewBag.Message");  
+            };  
+        </script>  
+    }*@  
+  
+
+    <div class="left">
+
+        @using (Html.BeginForm(Html.BeginForm("StudentdetailsAdd", "Student", null, FormMethod.Post, new { enctype = "multipart/form-data", id = "contact" })))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Student Name" } })
+                @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Date Of Birth" } })
+                @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Contact Number" } })
+                @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Gender") :
+                @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
+                   { new SelectListItem{Text="Male", Value="M"},
+                     new SelectListItem{Text="Female", Value="F"}}, "Please select", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.GuardianName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter GuardianName" } })
+                @Html.ValidationMessageFor(model => model.GuardianName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <span>SSLC Certificate</span>
+                @Html.TextBoxFor(m => m.tenth, new { type = "file" })
+                <br />
+                @*@Html.ValidationMessageFor(model => model.fileupload1, "", new { @class = "text-danger", })*@
+                @Html.ValidationMessageFor(m => m.tenth, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <span>HSS Certificate</span>
+                @Html.TextBoxFor(m => m.plustwo, new { type = "file" })
+                <br />
+                @*@Html.ValidationMessageFor(model => model.fileupload1, "", new { @class = "text-danger", })*@
+                @Html.ValidationMessageFor(m => m.plustwo, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <span>UG Certificate</span>
+                @Html.TextBoxFor(m => m.UG, new { type = "file" })
+                <br />
+                @*@Html.ValidationMessageFor(model => model.fileupload1, "", new { @class = "text-danger", })*@
+                @Html.ValidationMessageFor(m => m.UG, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <span>PG Certificate</span>
+                @Html.TextBoxFor(m => m.PG, new { type = "file" })
+                <br />
+                @*@Html.ValidationMessageFor(model => model.fileupload1, "", new { @class = "text-danger", })*@
+                @Html.ValidationMessageFor(m => m.PG, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <span>Community Certificate</span>
+                @Html.TextBoxFor(m => m.CC, new { type = "file" })
+                <br />
+                @*@Html.ValidationMessageFor(model => model.fileupload1, "", new { @class = "text-danger", })*@
+                @Html.ValidationMessageFor(m => m.CC, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Address" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Course Type") :
+                @Html.DropDownListFor(m => m.Coursetype, new List<SelectListItem>
+                   { new SelectListItem{Text="UG", Value="UG"},
+                     new SelectListItem{Text="PG", Value="UG"}}, "Please select", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Coursetype, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.collegename, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter College Name" } })
+                @Html.ValidationMessageFor(model => model.collegename, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Degree" } })
+                @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" data-submit="...Sending">Submit</button>
+            </div>
+        }
+
+        <input type="button" class="btn btn-primary" value="Click here to view Student List" onclick="location.href='@Url.Action("StudentDetailsView", "Student")'" />
+    </div>
+
+    <!-- js -->
+    <!-- /js files -->
+</body>
+
+</html>
